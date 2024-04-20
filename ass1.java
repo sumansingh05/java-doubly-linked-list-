@@ -15,6 +15,7 @@ public class ass1{
     Node tail;
     int count = 0;
 
+    //adding a node at the starting of the doubly linked list
     public void addFirst(int data){
         Node newNode = new Node(data);
         if(head == null){ 
@@ -28,6 +29,7 @@ public class ass1{
         count += 1;
     }
 
+    //adding a node at the end of the doubly linked list
     public void addLast(int data){
         Node newNode = new Node(data);
         if(head == null){ 
@@ -41,6 +43,7 @@ public class ass1{
         count += 1;
     }
 
+    //delete a node at the starting of the doubly linked list
     public void deleteFirst(){
         if(head == null){
             System.out.println("Doubly Linked List is empty");
@@ -57,6 +60,7 @@ public class ass1{
         count -= 1;
     } 
     
+    //delete a node at the end of the doubly linked list
     public void deleteLast(){
         if(head == null){
             System.out.println("Doubly Linked List is empty");
@@ -73,6 +77,7 @@ public class ass1{
         count -= 1;
     }
 
+    //function to display the doubly linked list
     public void display(){
         Node current = head;
         System.out.print("Doubly Linked List:");
@@ -81,6 +86,24 @@ public class ass1{
             current = current.next;
         }
         System.out.println();
+    }
+
+    //function to reverse the doubly linked list
+    public void reverse(){
+        Node current = head;
+        Node prev = null;
+        Node next;
+
+        while(current != null){
+            next = current.next;
+            current.next = prev;
+            current.prev = next;
+
+            prev = current;
+            current = next;
+        }
+        tail = head;
+        head = prev;
     }
     public static void main(String[] args) {
         ass1 dll = new ass1();
@@ -92,7 +115,7 @@ public class ass1{
         System.out.println("Length of Doubly Linked List is " + dll.count);
         System.out.println("Head of Doubly Linked List is " + dll.head.data);
         System.out.println("Tail of Doubly Linked List is " + dll.tail.data);
-        dll.deleteLast();
+        dll.reverse();
         dll.display();
         System.out.println("Length of Doubly Linked List is " + dll.count);
         System.out.println("Head of Doubly Linked List is " + dll.head.data);
